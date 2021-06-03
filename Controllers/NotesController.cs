@@ -25,9 +25,9 @@ namespace NoteTakerApi.Controllers
         /// </summary>
         /// <returns>All notes in the storage</returns>
         [HttpGet]
-        public ActionResult<List<Models.Note>> Get()
+        public ActionResult<IEnumerable<Models.Note>> Get()
         {
-            return _noteStorage.GetAll();
+            return new OkObjectResult(_noteStorage.GetAll());
         }
 
         /// <summary>

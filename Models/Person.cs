@@ -6,10 +6,9 @@ using System.Text.Json;
 
 namespace NoteTakerApi.Models
 {
-    public class Note
+    public class Person
     {
         public int Id { get; set; }
-        public string Text { get; set; }
-        public int PersonInCharge { get; set; }
+        public string Name { get; set; }
     }
 }

@@ -29,6 +29,19 @@ namespace NoteTakerApi
 
             services.AddSwaggerGen();
 
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        // All these are unsafe for production use, because of cross-site request forgery,
+                        // but for just development this should be fine.
+                        builder.AllowAnyHeader();
+                        builder.AllowAnyMethod();
+                        builder.AllowAnyOrigin();
+                    });
+            });
+
             services.AddSingleton<Services.NoteStorage>();
         }
 
@@ -43,6 +56,8 @@ namespace NoteTakerApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 

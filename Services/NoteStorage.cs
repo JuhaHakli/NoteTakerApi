@@ -34,6 +34,7 @@ namespace NoteTakerApi.Services
         public void Update(int id, Models.Note note)
         {
             notes[id].Text = note.Text;
+            notes[id].PersonInCharge = note.PersonInCharge;
         }
 
         public int CreateNew(Models.Note note)
@@ -41,7 +42,8 @@ namespace NoteTakerApi.Services
             var newNote = new Models.Note
             {
                 Id = GetNextId(),
-                Text = note.Text
+                Text = note.Text,
+                PersonInCharge = note.PersonInCharge
             };
 
             notes.Add(newNote.Id, newNote);
@@ -49,9 +51,9 @@ namespace NoteTakerApi.Services
             return newNote.Id;
         }
 
-        public List<Models.Note> GetAll()
+        public IEnumerable<Models.Note> GetAll()
         {
-            return notes.Values.ToList();
+            return notes.Values;
         }
 
         public int GetNextId()
