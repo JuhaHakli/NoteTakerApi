@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace NoteTakerApi.Services
 {
-    public class NoteStorage : ICloneable
+    public class NoteStorage
     {
         private Dictionary<int, Models.Note> notes;
         private int idCounter;
@@ -14,11 +14,6 @@ namespace NoteTakerApi.Services
         {
             notes = new Dictionary<int, Models.Note>();
             idCounter = 0;
-        }
-
-        public object Clone()
-        {
-            throw new NotImplementedException();
         }
 
         public bool ContainsId(int id)
